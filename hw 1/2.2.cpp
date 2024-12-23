@@ -17,25 +17,28 @@ int main(){
 	
 	int best=10001;
 	for(int i=0;i<n;i++){
-		int posi=arr[i]-find;
-		
-		if(posi>find){
+		int posi=find-arr[i];
+		if(posi<0){
 			posi*=-1;
+		}
+		
+		if(posi==0 || posi==find/2){
+			continue;
 		}
 		
 		int temp=kep[posi];
 		if(temp==0){
-			continue;
+            continue;
+        }
+        
+        int temp2=arr[i]-posi;
+        if(temp2<0){
+        	temp2*=-1;
 		}
-		else{
-			int temp2=temp-i;
-			if(temp2<0){
-				temp2*=-1;
-			}
-			if(temp2<best){
-				best=temp2;
-			}
+		if(temp2<best){
+			best=temp2;
 		}
 	}
+	
 	cout<<best;
 }
