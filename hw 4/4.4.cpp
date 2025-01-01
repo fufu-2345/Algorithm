@@ -20,13 +20,13 @@ int main()
 		}
 	}
 
-	int D[max] = {0};
+	int D[max+1] = {0};
 	for (int i = 0; i < n; i++)
 	{
 		D[A[i] - min]++;
 	}
 
-	for (int i = 1; i < max; i++)
+	for (int i = 1; i <= max; i++)
 	{
 		D[i] += D[i - 1];
 	}
