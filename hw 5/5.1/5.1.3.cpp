@@ -14,12 +14,12 @@ vector<vector<int>>merge(vector<vector<int>> l,vector<vector<int>> r){
 				break;
 			}
 		}
-		if(check==true){
+		if(check){
 			result.push_back(l[i]);
 		}
 	}
 	
-	for (int i = 0; i < n2; i++) {
+	for (int i=0;i<n2;i++) {
         result.push_back(r[i]);
     }
 	
@@ -62,9 +62,9 @@ int main(){
 	vector<vector<int>> v(n); 
 	
 	int kep=0;
-    for (int i = 0; i < 100; i++) {	
+    for (int i=0;i<100;i++) {	
     	if(arr[i]!=0){
-        	v[kep] = tempv[arr[i]-1]; 
+        	v[kep]=tempv[arr[i]-1]; 
         	kep++;
 		}
     }
