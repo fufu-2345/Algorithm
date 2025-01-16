@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 
-int karasuba(int x,int y){
+int karasuba(int x,int y,int* G){
+	(*G)++;
 	if(x<10 && y<10){
 		return x*y;
 	}
@@ -34,9 +35,9 @@ int karasuba(int x,int y){
 	d-=c*z;
 	
 	int z1,z2,z3;
-	z1=karasuba(a,c);
-	z2=karasuba(a+b,c+d);
-	z3=karasuba(b,d);
+	z1=karasuba(a,c,G);
+	z2=karasuba(a+b,c+d,G);
+	z3=karasuba(b,d,G);
 
 	
 	return (z1*z*z)+z*(z2-z1-z3)+z3;	
@@ -47,7 +48,7 @@ int karasuba(int x,int y){
 int main(){
 	////    x    y
 	////   342  231
-	int x,y;
+	int x,y,G=0;
 	cin>>x>>y;
 	
 	int sign=1;
@@ -62,10 +63,11 @@ int main(){
 	
 	
 	if(x>y){
-		cout<<sign*karasuba(x,y);
+		cout<<sign*karasuba(x,y,&G);
 	} 
 	else {
-		cout<<sign*karasuba(y,x);
+		cout<<sign*karasuba(y,x,&G);
 	}
+	cout<<endl<<endl<<G;
 	
 }
