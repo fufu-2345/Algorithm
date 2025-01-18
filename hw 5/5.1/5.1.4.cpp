@@ -39,7 +39,7 @@ int bisearch(int arr[],int l,int r,int find){
             return m;
         }
 
-        if(closest == -999 || abs(arr[m] - find) < abs(arr[closest] - find)) {
+        if(       closest==-999    ||   abs(arr[m]-find)            <    abs(arr[closest]-find)      ){
             closest = m;
         }
         
@@ -56,27 +56,24 @@ int bisearch(int arr[],int l,int r,int find){
 
 
 int main(){
-	/*  10,12,15,17,18,20,25
-	int n,k,m;
-	cin<<n<<k<<m;
 	
+	/*
+	5 3 8 12 17 45 13 4 
+	7 10 12 15 17 18 20 25 8 2         
+	*/
+	
+	int n,k,M;
+	cin>>n;
 	int arr[n];
+	
 	for(int i=0;i<n;i++){
-		cin<<arr[n];
-	}*/
-	
-	int arr[]={18, 15, 12, 25, 17, 20, 10};
-	int k=2,M=16,n=(sizeof(arr)/sizeof(arr[0]));
-	
-	
-	sort(arr,0,n-1);
-	for(int i=0;i<n;i++){
-		cout<<arr[i]<<" ";
+		cin>>arr[i];
 	}
 	
+	cin>>M>>k;
+	sort(arr,0,n-1);
 	
 	int where;
-	cout<<endl;
 	if(M<arr[0]){
 		where=0;
 	}
@@ -87,7 +84,15 @@ int main(){
 		where=bisearch(arr,0,n-1,M);
 	}
 	
-	cout<<where;
-	
+	int l=where-1,r=where;
+	while(r-l<=k){
+		cout<<l<<" "<<r<<endl;
+		if(   abs(arr[l]-M)   >   abs(arr[r]-M)      ){
+			r++;
+		}
+		else{
+			l--;
+		}
+	}
 	
 }
