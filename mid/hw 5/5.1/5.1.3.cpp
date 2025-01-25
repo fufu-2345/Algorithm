@@ -6,26 +6,27 @@ vector<vector<int>>merge(vector<vector<int>> l,vector<vector<int>> r,int* count)
 	int n=l.size(),n2=r.size();
 	vector<vector<int>> result;
 	
-	for(int i=0;i<n;i++){
-		bool check=true;
-		for(int j=0;j<n2;j++){
-			if(l[i][1]<r[j][1]){
-				check=false;
-				break;
-			}
-		}
-		if(check){
-			result.push_back(l[i]);
-		}
-	}
-	
-	for (int i=0;i<n2;i++) {
+    int y = -(1<<31);
+    for (int i = 0; i < n2; i++){
+        if(r[i][1] > y){
+            y = r[i][1];
+        }
+    }
+    
+    for (int i = 0; i < n; i++){
+        if (l[i][1] > y){
+            result.push_back(l[i]);
+        }
+    }
+
+	for (int i=0;i<n2;i++){
         result.push_back(r[i]);
     }
 	
 	(*count)++;
 	return result;
 }
+
 
 vector<vector<int>> maxima(vector<vector<int>> v,int l,int r,int* count){
 	(*count)++;
