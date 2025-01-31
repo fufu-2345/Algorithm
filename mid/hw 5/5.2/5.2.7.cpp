@@ -24,6 +24,8 @@ long long Multiply(int a,int b){
 	long long A=Multiply(a1,b1);
 	long long B=Multiply(a2,b2);
 	long long C=Multiply(a1+a2,b1+b2);
+	
+	
 	cout<<A<<" "<<B<<" "<<C<<endl;
 	
 	return A*z*z+(C-A-B)*z+B;

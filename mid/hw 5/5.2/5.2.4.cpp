@@ -18,14 +18,15 @@ long long Multiply(int a,int b){
 	
 	a1=a/z;
 	b1=b/z;
-	a2=a-a1*z;
-	b2=b-b1*z;
+	a2=a%z;
+	b2=b%z;
 	
-	
-	long long A=Multiply(a1,b1);
+	long long D=Multiply(a2,b2);
 	long long B=Multiply(a2,b1);
 	long long C=Multiply(a1,b2);
-	long long D=Multiply(a2,b2);
+	long long A=Multiply(a1,b1);
+	
+	
 	cout<<A<<" "<<B<<" "<<C<<" "<<D<<endl;
 	
 	return A*z*z+(B+C)*z+D;
