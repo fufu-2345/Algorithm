@@ -3,8 +3,8 @@
 using namespace std;
 
 int n;
-vector<vector<int>> arr;
 int count=0;
+vector<vector<int>> arr;
 
 void swap(int a,int b){
 	int temp=arr[a][0];
@@ -26,7 +26,7 @@ void swap(int a,int b){
 void sort(){
 	for(int k=n/2;k>0;k/=2){
 		for(int i=k;i<n;i++){
-			for(int j=i;j>=k && (arr[j][3]>arr[j-k][3] || (arr[j][3]==arr[j-k][3] && arr[j][0]<arr[j-k][0]));j-=k){
+			for(int j=i;j>=k && (arr[j][1]<arr[j-k][1] || (arr[j][1]==arr[j-k][1] && arr[j][0]<arr[j-k][0]));j-=k){
 				swap(j,j-k);
 			}
 		}
@@ -57,10 +57,8 @@ void cal(){
 int main(){
 	cin>>n;
 	int a,b;
-	
 	for(int i=0;i<n;i++){
 		cin>>a>>b;
-		int c=b-a;
 		arr.push_back({a,b,i+1,b-a});
 	}
 	sort();
@@ -68,6 +66,7 @@ int main(){
 	for(int i=0;i<n;i++){
 		cout<<arr[i][2]<<": "<<arr[i][0]<<" "<<arr[i][1]<<" | "<<arr[i][3]<<endl;
 	}
+	
 	cal();
 	cout<<endl<<endl<<count;
 }
