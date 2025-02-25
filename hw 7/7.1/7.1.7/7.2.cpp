@@ -3,6 +3,7 @@
 using namespace std;
 
 int n;
+int count=0;
 vector<vector<int>> arr;
 
 void swap(int a,int b){
@@ -29,6 +30,23 @@ void sort(){
 	}
 }
 
+void cal(){
+	int time;
+	vector<vector <int>> temp;
+	for(int i=0;i<n;i++){
+		time=arr[i][0];
+		temp.push_back(arr[i]);
+		for(int j=temp.size()-1;j>=0;j--){
+			if(temp[j][1]<=time){
+				temp.erase(temp.begin()+j);
+			}
+		}
+		if(temp.size()>count){
+			count=temp.size();
+		}
+	}
+}
+
 int main(){
 	cin>>n;
 	int a,b;
@@ -41,4 +59,7 @@ int main(){
 	for(int i=0;i<n;i++){
 		cout<<arr[i][2]<<": "<<arr[i][0]<<" "<<arr[i][1]<<endl;
 	}
+	
+	cal();
+	cout<<endl<<endl<<count;
 }

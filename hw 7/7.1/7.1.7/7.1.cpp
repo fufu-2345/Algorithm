@@ -34,17 +34,28 @@ void sort(){
 }
 
 void cal(){
-	vector<vector<int>> temp;
+	int time;
+	vector<vector <int>> temp;
 	for(int i=0;i<n;i++){
-		int time=
+		time=arr[i][0];
+		arr[i][1]+=time;
 		temp.push_back(arr[i]);
-		for(int j=0;j<temp.size())
+		
+		for(int j=temp.size()-1;j>=0;j--){
+			if(temp[j][1]<=time){
+				temp.erase(temp.begin()+j);
+			}
+		}
+		if(temp.size()>count){
+			count=temp.size();
+		}
 	}
 }
 
 int main(){
 	cin>>n;
 	int a,b;
+	
 	for(int i=0;i<n;i++){
 		cin>>a>>b;
 		int c=b-a;
