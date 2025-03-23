@@ -8,36 +8,36 @@ using namespace std;
 int n,m;
 int sum=0;
 
-int cal(vector<vector<int>> edges) {
-    vector<vector<pair<int, int>>> adj(n);
+int cal(vector<vector<int>> edges){
+    vector<vector<pair<int,int>>> adj(n);
 
-    for (int i = 0; i < edges.size(); i++) {
-        int u = edges[i][0] - 1;
-        int v = edges[i][1] - 1;
-        int wt = edges[i][2];
-        adj[u].push_back({v, wt});
-        adj[v].push_back({u, wt});
+    for(int i=0;i<edges.size();i++){
+        int u=edges[i][0]-1;
+        int v=edges[i][1]-1;
+        int wt=edges[i][2];
+        adj[u].push_back({v,wt});
+        adj[v].push_back({u,wt});
     }
 
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    vector<bool> visited(n, false);
+    vector<bool> visited(n,false);
 
-    pq.push({0, 0});
+    pq.push({0,0});
 
-    while (!pq.empty()) {
-        auto p = pq.top();
+    while(!pq.empty()){
+        auto p=pq.top();
         pq.pop();
 
-        int wt = p.first;
-        int u = p.second;
+        int wt=p.first;
+        int u=p.second;
 
-        if (visited[u]) continue;
+        if(visited[u]) continue;
 
-        sum += wt;
-        visited[u] = true;
+        sum+=wt;
+        visited[u]=true;
 
-        for (auto v : adj[u]) {
-            if (!visited[v.first]) {
+        for(auto v : adj[u]){
+            if(!visited[v.first]){
                 pq.push({v.second, v.first});
             }
         }

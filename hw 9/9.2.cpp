@@ -41,13 +41,6 @@ int main(){
 		}
 		arr[a].push_back(b);
 	}
-	/*
-	for(int i=1;i<101;i++){
-		for(int j=0;j<arr[i].size();j++){
-			cout<<arr[i][j]<<" ";
-		}
-		cout<<endl;
-	}*/
 	
 	float result=0;
 	for(int i=1;i<101;i++){
